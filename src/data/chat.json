@@ -6,54 +6,64 @@
         "id": 12456,
         "image_url": "https://picsum.photos/id/237/200/300",
         "participant": [
-          {
-            "id": "admin@mail.com",
-            "name": "Admin",
-            "role": 0
-          },
-          {
-            "id": "agent@mail.com",
-            "name": "Agent A",
-            "role": 1
-          },
-          {
-            "id": "customer@mail.com",
-            "name": "king customer",
-            "role": 2
-          }
+          { "id": "admin@mail.com", "name": "Admin", "role": 0 },
+          { "id": "agent@mail.com", "name": "Agent A", "role": 1 },
+          { "id": "customer@mail.com", "name": "king customer", "role": 2 }
         ]
       },
       "comments": [
-        {
-          "id": 885512,
-          "type": "text",
-          "message": "Selamat malam",
-          "sender": "customer@mail.com"
-        },
-        {
-          "id": 885513,
-          "type": "text",
-          "message": "Malam",
-          "sender": "agent@mail.com"
-        },
-        {
-          "id": 885514,
-          "type": "text",
-          "message": "Ada yang bisa saya bantu?",
-          "sender": "agent@mail.com"
-        },
-        {
-          "id": 885515,
-          "type": "text",
-          "message": "Saya ingin mengirimkan bukti pembayaran, karena diaplikasi selalu gagal",
-          "sender": "customer@mail.com"
-        },
-        {
-          "id": 885516,
-          "type": "text",
-          "message": "Baik, silahkan kirimkan lampiran bukti pembayarannya",
-          "sender": "agent@mail.com"
-        }
+        { "id": 885512, "type": "text", "message": "Selamat malam", "sender": "customer@mail.com" },
+        { "id": 885513, "type": "text", "message": "Malam", "sender": "agent@mail.com" },
+        { "id": 885514, "type": "text", "message": "Ada yang bisa saya bantu?", "sender": "agent@mail.com" },
+        { "id": 885515, "type": "text", "message": "Saya ingin mengirimkan bukti pembayaran, karena diaplikasi selalu gagal", "sender": "customer@mail.com" },
+        { "id": 885516, "type": "text", "message": "Baik, silahkan kirimkan lampiran bukti pembayarannya", "sender": "agent@mail.com" }
+      ]
+    },
+    {
+      "room": {
+        "name": "Product B",
+        "id": 22334,
+        "image_url": "https://picsum.photos/id/1025/200/300",
+        "participant": [
+          { "id": "agent@mail.com", "name": "Agent A", "role": 1 },
+          { "id": "customer2@mail.com", "name": "Siti Customer", "role": 2 }
+        ]
+      },
+      "comments": [
+        { "id": 900001, "type": "text", "message": "Halo, saya ingin tanya soal promo", "sender": "customer2@mail.com" },
+        { "id": 900002, "type": "text", "message": "Baik, promo apa yang Anda maksud?", "sender": "agent@mail.com" }
+      ]
+    },
+    {
+      "room": {
+        "name": "Group Diskusi",
+        "id": 55678,
+        "image_url": "https://picsum.photos/id/1005/200/300",
+        "participant": [
+          { "id": "admin@mail.com", "name": "Admin", "role": 0 },
+          { "id": "agent@mail.com", "name": "Agent A", "role": 1 },
+          { "id": "agent2@mail.com", "name": "Agent B", "role": 1 },
+          { "id": "customer3@mail.com", "name": "Bagus Customer", "role": 2 }
+        ]
+      },
+      "comments": [
+        { "id": 910001, "type": "text", "message": "Selamat pagi semuanya!", "sender": "agent2@mail.com" },
+        { "id": 910002, "type": "text", "message": "Pagi!", "sender": "customer3@mail.com" }
+      ]
+    },
+    {
+      "room": {
+        "name": "Support Team",
+        "id": 77889,
+        "image_url": "https://picsum.photos/id/1011/200/300",
+        "participant": [
+          { "id": "admin@mail.com", "name": "Admin", "role": 0 },
+          { "id": "agent@mail.com", "name": "Agent A", "role": 1 },
+          { "id": "agent3@mail.com", "name": "Agent C", "role": 1 }
+        ]
+      },
+      "comments": [
+        { "id": 920001, "type": "text", "message": "Update bug fix jam 2 siang ya!", "sender": "admin@mail.com" }
       ]
     }
   ]
