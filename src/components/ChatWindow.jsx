@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
 import MessageList from "./MessageList";
 import chatData from "../data/chat.json"; // ambil dummy JSON lokal
+import { FiSend } from "react-icons/fi"; // Tambahkan di atas
+
 
 export default function ChatWindow() {
   const [room, setRoom] = useState(null);
   const [comments, setComments] = useState([]);
+  const [newMessage, setNewMessage] = useState(""); // <- input state
+
+  const currentUser = "agent@mail.com"; // sementara hardcoded
 
   useEffect(() => {
-    // Ambil data room & comments dari JSON
     if (chatData.results && chatData.results.length > 0) {
       const data = chatData.results[0];
       setRoom(data.room);
       setComments(data.comments);
     }
   }, []);
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() === "") return; // cegah pesan kosong
+
+    const newComment = {
+      id: Date.now(), // ID unik sementara
+      type: "text",
+      message: newMessage,
+      sender: currentUser,
+    };
+
+    setComments((prev) => [...prev, newComment]);
+    setNewMessage(""); // reset input
+  };
 
   if (!room) return <div className="p-4">Loading chat...</div>;
 
@@ -35,12 +53,22 @@ export default function ChatWindow() {
       </div>
 
       {/* Footer / Input */}
-      <div className="p-4 bg-white shadow-md">
+      <div className="p-4 bg-white shadow-md flex space-x-2">
         <input
           type="text"
           placeholder="Tulis pesan..."
-          className="w-full p-2 border rounded-lg focus:outline-none"
+          className="flex-1 p-2 border rounded-lg focus:outline-none"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
         />
+        <button
+        onClick={handleSendMessage}
+        className="bg-blue-500 text-white p-3 rounded-full flex items-center justify-center"
+        >
+          <FiSend size={18} />
+        </button>
+
       </div>
     </div>
   );
