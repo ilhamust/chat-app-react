@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MessageList from "./MessageList";
 import chatData from "../data/chat.json"; // ambil dummy JSON lokal
-import { FiSend } from "react-icons/fi"; // Tambahkan di atas
+import { FiSend, FiPaperclip } from "react-icons/fi"; 
 
 
 export default function ChatWindow() {
@@ -33,6 +33,27 @@ export default function ChatWindow() {
     setNewMessage(""); // reset input
   };
 
+  const handleFileUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const fileUrl = URL.createObjectURL(file);
+
+  const newComment = {
+    id: Date.now(),
+    type: file.type.startsWith("image")
+      ? "image"
+      : file.type.startsWith("video")
+      ? "video"
+      : "file",
+    message: fileUrl,
+    sender: currentUser,
+    fileName: file.name,
+  };
+
+  setComments((prev) => [...prev, newComment]);
+};
+
   if (!room) return <div className="p-4">Loading chat...</div>;
 
   return (
@@ -53,23 +74,36 @@ export default function ChatWindow() {
       </div>
 
       {/* Footer / Input */}
-      <div className="p-4 bg-white shadow-md flex space-x-2">
-        <input
-          type="text"
-          placeholder="Tulis pesan..."
-          className="flex-1 p-2 border rounded-lg focus:outline-none"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-        />
-        <button
-        onClick={handleSendMessage}
-        className="bg-blue-500 text-white p-3 rounded-full flex items-center justify-center"
-        >
-          <FiSend size={18} />
-        </button>
+<div className="p-4 bg-white shadow-md flex space-x-2 items-center">
+  {/* Upload Button */}
+  <label className="cursor-pointer text-gray-600">
+    <FiPaperclip size={22} />
+    <input
+      type="file"
+      className="hidden"
+      onChange={(e) => handleFileUpload(e)}
+    />
+  </label>
 
-      </div>
+  {/* Text Input */}
+  <input
+    type="text"
+    placeholder="Tulis pesan..."
+    className="flex-1 p-2 border rounded-lg focus:outline-none"
+    value={newMessage}
+    onChange={(e) => setNewMessage(e.target.value)}
+    onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+  />
+
+  {/* Send Button */}
+  <button
+    onClick={handleSendMessage}
+    className="bg-blue-500 text-white p-3 rounded-full flex items-center justify-center"
+  >
+    <FiSend size={18} />
+  </button>
+</div>
+
     </div>
   );
 }

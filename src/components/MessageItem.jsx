@@ -16,14 +16,37 @@ export default function MessageItem({ message, participants }) {
       )}
 
       {/* Bubble Chat */}
-      <div
-        className={`shadow p-3 rounded-lg max-w-xs ${
-          isSender ? "bg-blue-500 text-white" : "bg-white text-gray-900"
-        }`}
-      >
-        {!isSender && <p className="text-sm font-semibold">{sender?.name}</p>}
-        <p>{message.message}</p>
-      </div>
+      {message.type === "text" && (
+  <p className="text-gray-800">{message.message}</p>
+)}
+
+{message.type === "image" && (
+  <img
+    src={message.message}
+    alt="uploaded"
+    className="rounded-lg max-w-[200px] max-h-[200px] object-cover"
+  />
+)}
+
+{message.type === "video" && (
+  <video
+    controls
+    className="rounded-lg max-w-[200px] max-h-[200px]"
+  >
+    <source src={message.message} type="video/mp4" />
+  </video>
+)}
+
+{message.type === "file" && (
+  <a
+    href={message.message}
+    download={message.fileName}
+    className="underline text-blue-500 text-sm"
+  >
+    {message.fileName}
+  </a>
+)}
+
 
       {/* Avatar untuk pesan kita sendiri (optional, bisa dihapus) */}
       {isSender && (
