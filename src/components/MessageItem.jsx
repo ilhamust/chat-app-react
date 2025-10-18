@@ -64,10 +64,11 @@ export default function MessageItem({ message, participants, roomType }) {
 
         {/* (Optional) Timestamp kecil - tampilkan jika ada */}
         {message.timestamp && (
-          <span className={`absolute text-[10px] text-gray-400 ${isSender ? "right-2" : "right-2"} bottom-[-18px`}>
+          <span className="text-[10px] text-gray-400 mt-1 self-end">
             {new Date(message.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-          </span>
-        )}
+            </span>
+          )}
+
       </div>
 
       {/* Avatar untuk pesan kita sendiri (optional) */}

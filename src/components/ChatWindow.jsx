@@ -17,50 +17,43 @@ export default function ChatWindow({ room, initialComments }) {
     }, 50);
   }, [initialComments, room]);
 
-  const handleSendMessage = () => {
-    if (newMessage.trim() === "") return;
+const handleSendMessage = () => {
+  if (newMessage.trim() === "") return;
 
-    const newComment = {
-      id: Date.now(),
-      type: "text",
-      message: newMessage,
-      sender: currentUser,
-      timestamp: new Date().toISOString()
-    };
-
-    setComments((prev) => [...prev, newComment]);
-    setNewMessage("");
-
-    // scroll to bottom
-    setTimeout(() => {
-      if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
-    }, 50);
+  const newComment = {
+    id: Date.now(),
+    type: "text",
+    message: newMessage,
+    sender: currentUser,
+    timestamp: new Date().toISOString(), 
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  setComments((prev) => [...prev, newComment]);
+  setNewMessage("");
+};
 
-    const fileUrl = URL.createObjectURL(file);
-    const newComment = {
-      id: Date.now(),
-      type: file.type.startsWith("image")
-        ? "image"
-        : file.type.startsWith("video")
-        ? "video"
-        : "file",
-      message: fileUrl,
-      sender: currentUser,
-      fileName: file.name,
-      timestamp: new Date().toISOString()
-    };
+const handleFileUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    setComments((prev) => [...prev, newComment]);
+  const fileUrl = URL.createObjectURL(file);
 
-    setTimeout(() => {
-      if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
-    }, 50);
+  const newComment = {
+    id: Date.now(),
+    type: file.type.startsWith("image")
+      ? "image"
+      : file.type.startsWith("video")
+      ? "video"
+      : "file",
+    message: fileUrl,
+    sender: currentUser,
+    fileName: file.name,
+    timestamp: new Date().toISOString(), 
   };
+
+  setComments((prev) => [...prev, newComment]);
+};
+
 
   if (!room) return <div className="p-4">Loading chat...</div>;
 
