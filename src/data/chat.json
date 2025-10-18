@@ -3,6 +3,7 @@
     {
       "room": {
         "name": "Product A",
+        "type": "group",
         "id": 12456,
         "image_url": "https://picsum.photos/id/237/200/300",
         "participant": [
@@ -22,6 +23,7 @@
     {
       "room": {
         "name": "Product B",
+        "type": "group",
         "id": 22334,
         "image_url": "https://picsum.photos/id/1025/200/300",
         "participant": [
@@ -37,6 +39,7 @@
     {
       "room": {
         "name": "Group Diskusi",
+        "type": "group",
         "id": 55678,
         "image_url": "https://picsum.photos/id/1005/200/300",
         "participant": [
@@ -54,6 +57,7 @@
     {
       "room": {
         "name": "Support Team",
+        "type": "group",
         "id": 77889,
         "image_url": "https://picsum.photos/id/1011/200/300",
         "participant": [

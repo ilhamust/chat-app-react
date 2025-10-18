@@ -1,7 +1,7 @@
 import React from "react";
 import MessageItem from "./MessageItem";
 
-export default function MessageList({ comments, participants }) {
+export default function MessageList({ comments = [], participants = [], roomType = "single" }) {
   return (
     <div className="space-y-3">
       {comments.map((msg) => (
@@ -9,6 +9,7 @@ export default function MessageList({ comments, participants }) {
           key={msg.id}
           message={msg}
           participants={participants}
+          roomType={roomType}
         />
       ))}
     </div>
